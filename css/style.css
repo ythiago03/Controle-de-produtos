@@ -1,0 +1,93 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* geral */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: #fafbfc;
+}
+
+/* header */
+
+header{
+    background-color: blueviolet;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+/* main */
+
+main{
+    padding: 30px 50px;
+}
+
+.card{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.lineinput{
+    display: grid;
+    margin-bottom: 10px;
+}
+
+input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+button{
+    border: none;
+    padding: 10px;
+    outline: none;
+    background-color: blueviolet;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 700;
+    color: #fff;
+    transition: background ease 300ms;
+}
+
+button:hover{
+    background-color: rgb(111, 47, 171);
+}
+
+/* products */
+
+.products{
+    margin-top: 15px;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+table th{
+    padding: 1px 5px;
+    border: 1px solid #ccc;
+    background-color: #f0eeee;
+    text-align: left;
+}
+
+table td{
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table tr:nth-child(even){
+    background-color: #f0eeee;
+}
