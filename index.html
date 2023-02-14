@@ -25,22 +25,22 @@
     
         <div class="card">
             <div class="lineinput">
-                <label for="product">Produto</label>
-                <input type="text" name="product" id="product" placeholder="Nome do produto">
+                <label for="productName">Produto</label>
+                <input type="text" name="product" id="productName" placeholder="Nome do produto">
             </div>
 
             <div class="lineinput">
-                <label for="value">Valor</label>
-                <input type="text" name="value" id="value" placeholder="Valor do produto">
+                <label for="productValue">Valor</label>
+                <input type="text" name="value" id="productValue" placeholder="Valor do produto">
             </div>
 
 
-            <button id="btn-add">Adicionar</button>
-            <button id="btn-remove">Remover</button>
+            <button id="btn-save" onclick="product.save()">Salvar</button> 
+            <button id="btn-cancel">Cancelar</button>
         </div>
 
         <section class="products">
-            <table>
+            <table id="table-products">
                 <thead>
                     <th>Id</th>
                     <th>Nome</th>
@@ -49,45 +49,7 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>Produto 1</td>
-                        <td>R$1000.00</td>
-                        <td>
-                            <span class="material-symbols-outlined">edit</span>
-                            <span class="material-symbols-outlined">delete</span>     
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>01</td>
-                        <td>Produto 1</td>
-                        <td>R$1000.00</td>
-                        <td>
-                            <span class="material-symbols-outlined">edit</span>
-                            <span class="material-symbols-outlined">delete</span>     
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>01</td>
-                        <td>Produto 1</td>
-                        <td>R$1000.00</td>
-                        <td>
-                            <span class="material-symbols-outlined">edit</span>
-                            <span class="material-symbols-outlined">delete</span>     
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>01</td>
-                        <td>Produto 1</td>
-                        <td>R$1000.00</td>
-                        <td>
-                            <span class="material-symbols-outlined">edit</span>
-                            <span class="material-symbols-outlined">delete</span>     
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
