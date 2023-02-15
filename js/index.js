@@ -89,10 +89,23 @@ class Product {
         tdValue.innerHTML = value
         tdActions.innerHTML = `
                                 <td>
-                                    <span class="material-symbols-outlined">edit</span>
-                                    <span class="material-symbols-outlined">delete</span>     
+                                    <span id="${id}" class="material-symbols-outlined" onclick="product.editevent()">edit</span>
+                                    <span id="${id}" class="material-symbols-outlined" onclick="product.delete(event)">delete</span>     
                                     </td>`
     })
+   }
+
+   edit(){
+        console.log('editada');
+   }
+
+   delete({target}){
+        this.products.forEach((product, index) => {
+            if(index === +target.id){
+                this.products.splice(index, 1)
+                this.#renderProducts()
+            }
+        })
    }
 }
 
