@@ -31,12 +31,12 @@
 
             <div class="lineinput">
                 <label for="productValue">Valor</label>
-                <input type="text" name="value" id="productValue" placeholder="Valor do produto">
+                <input type="number" name="value" id="productValue" placeholder="Valor do produto">
             </div>
 
 
             <button id="btn-save" onclick="product.save()">Salvar</button> 
-            <button id="btn-cancel">Cancelar</button>
+            <button id="btn-cancel" onclick="product.clear()">Cancelar</button>
         </div>
 
         <section class="products">
