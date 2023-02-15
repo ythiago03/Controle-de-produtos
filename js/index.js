@@ -74,7 +74,25 @@ class Product {
    }
 
    #renderProducts(){
-    console.log(this.products);
+    let tbody = document.querySelector('#tbody')
+    tbody.innerHTML = ''
+
+    this.products.forEach(({ id, name, value }) => {
+        let tr = tbody.insertRow()
+        let tdId = tr.insertCell()
+        let tdTitle = tr.insertCell()
+        let tdValue = tr.insertCell()
+        let tdActions = tr.insertCell()
+
+        tdId.innerHTML = id
+        tdTitle.innerHTML = name
+        tdValue.innerHTML = value
+        tdActions.innerHTML = `
+                                <td>
+                                    <span class="material-symbols-outlined">edit</span>
+                                    <span class="material-symbols-outlined">delete</span>     
+                                    </td>`
+    })
    }
 }
 
