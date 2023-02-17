@@ -4,29 +4,35 @@
                         <td>Produto 1</td>
                         <td>R$1000.00</td>
                         <td>
-                            <span class="material-symbols-outlined">edit</span>
-                            <span class="material-symbols-outlined">delete</span>     
+                            <span class="material-symbols-outlined" onclick="product.edit(${id},'${name}', ${value})">edit</span>
+                            <span class="material-symbols-outlined" onclick="product.delete(${id})">delete</span>     
                         </td>
                     </tr>
 */ 
-/* getting elements */
-const btnSave = document.querySelector('#btn-save')
-const btnCancel = document.querySelector('#btn-cancel')
 
 /* class product */
 
 class Product {
   
-
     constructor(){
         this.id = 0;
         this.products = [];
+        this.editId = null;
     }
 
-    
     save(){
-        let product = this.#getData();
+        let product = this.#getData();//recebe o objeto produto
+
         if(product === 'invalid'){
+            return
+        }
+
+        if(this.editId != null){//caso o editId não seja null, significa que o 'modo de edição' está ativo
+            this.#update()
+            document.querySelector('#btn-save').innerText = 'Salvar'
+            this.clear()
+            this.#renderProducts()
+            this.editId = null
             return
         }
 
@@ -77,7 +83,7 @@ class Product {
         let tbody = document.querySelector('#tbody')
         tbody.innerHTML = ''
 
-        this.products.forEach(({ id, name, value }) => {
+        this.products.forEach(({ id, name, value}) => {
             let tr = tbody.insertRow()
             let tdId = tr.insertCell()
             let tdTitle = tr.insertCell()
@@ -89,14 +95,26 @@ class Product {
             tdValue.innerHTML = value
             tdActions.innerHTML = `
                                     <td>
-                                        <span class="material-symbols-outlined" onclick="product.editevent()">edit</span>
+                                        <span class="material-symbols-outlined" onclick="product.edit(${id},'${name}', ${value})">edit</span>
                                         <span class="material-symbols-outlined" onclick="product.delete(${id})">delete</span>     
                                         </td>`
         })
    }
 
-    edit(){
-        console.log('editada');
+    edit(id, name, value){
+        document.querySelector('#productName').value = name
+        document.querySelector('#productValue').value = value
+        document.querySelector('#btn-save').innerText = 'Atualizar'
+        this.editId = id
+   }
+
+   #update(){
+    this.products.forEach(({id}, i) => {
+        if(id == this.editId){
+            this.products[i].name = document.querySelector('#productName').value
+            this.products[i].value = document.querySelector('#productValue').value
+        }
+    })
    }
 
     delete(id){
@@ -111,7 +129,4 @@ class Product {
     }
 }
 
-let product = new Product()
-
-//btnSave.addEventListener('click', product.save)
-// btnCancel.addEventListener('click', product.cancel)
+let product = new Product();
