@@ -37,18 +37,18 @@ class Product {
     }
 
    #getData(){
-    let product = {}
+        let product = {}
 
-    product.id = this.id;
-    product.name = document.querySelector('#productName').value;
-    product.value = document.querySelector('#productValue').value;
-      
-    if(this.#verifyData(product)){
-        this.clear()
-        return 'invalid'
-    }
-    
-    return product
+        product.id = this.id;
+        product.name = document.querySelector('#productName').value;
+        product.value = document.querySelector('#productValue').value;
+        
+        if(this.#verifyData(product)){
+            this.clear()
+            return 'invalid'
+        }
+        
+        return product
    }
 
    #verifyData({ name, value }){
@@ -74,26 +74,41 @@ class Product {
    }
 
    #renderProducts(){
-    let tbody = document.querySelector('#tbody')
-    tbody.innerHTML = ''
+        let tbody = document.querySelector('#tbody')
+        tbody.innerHTML = ''
 
-    this.products.forEach(({ id, name, value }) => {
-        let tr = tbody.insertRow()
-        let tdId = tr.insertCell()
-        let tdTitle = tr.insertCell()
-        let tdValue = tr.insertCell()
-        let tdActions = tr.insertCell()
+        this.products.forEach(({ id, name, value }) => {
+            let tr = tbody.insertRow()
+            let tdId = tr.insertCell()
+            let tdTitle = tr.insertCell()
+            let tdValue = tr.insertCell()
+            let tdActions = tr.insertCell()
 
-        tdId.innerHTML = id
-        tdTitle.innerHTML = name
-        tdValue.innerHTML = value
-        tdActions.innerHTML = `
-                                <td>
-                                    <span class="material-symbols-outlined">edit</span>
-                                    <span class="material-symbols-outlined">delete</span>     
-                                    </td>`
-    })
+            tdId.innerHTML = id
+            tdTitle.innerHTML = name
+            tdValue.innerHTML = value
+            tdActions.innerHTML = `
+                                    <td>
+                                        <span class="material-symbols-outlined" onclick="product.editevent()">edit</span>
+                                        <span class="material-symbols-outlined" onclick="product.delete(${id})">delete</span>     
+                                        </td>`
+        })
    }
+
+    edit(){
+        console.log('editada');
+   }
+
+    delete(id){
+        if(confirm('Você realmente deseja deletar esse item? Depois de deletado não há como recupera-lo!')){
+            this.products.forEach((product, index) => {
+                if(product.id === id){
+                    this.products.splice(index, 1)
+                    this.#renderProducts()
+                }
+            })
+       }
+    }
 }
 
 let product = new Product()
